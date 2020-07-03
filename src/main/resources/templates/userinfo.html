@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ユーザ情報</title>
+</head>
+
+<body>
+    <th:block th:object="${user}">
+    <h1>ユーザ情報 (ID=[[*id]])</h1>
+    <table>
+        <tr>
+            <td> [[*uid]] </td>
+            <td> [[*name]] </td>
+            <td> [[*createdAt]] </td>
+        </tr>
+    </table>
+    </th:block>
+</body>
+</html>
