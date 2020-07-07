@@ -27,7 +27,7 @@ public class UserService {
   public List<UserDto> getUserByuid(String uid){
     ArrayList<UserDto> list = new ArrayList<UserDto>();
 
-        for (User user : userRepository.findUserByUidLike( "%" + uid + "%")) {
+        for (User user : userRepository.findUserByUidLike(uid)) {
             list.add(UserDto.build(user));
         }
         return list;
