@@ -7,15 +7,17 @@
 </head>
 
 <body>
-    <th:block th:object="${user}">
-    <h1>ユーザ情報 (ID=[[*id]])</h1>
+    <!-- <th:block th:object="${ulist}"> -->
+    
     <table>
-        <tr>
-            <td> [[*uid]] </td>
-            <td> [[*name]] </td>
-            <td> [[*createdAt]] </td>
+        <!-- <tr> -->
+        <tr th:each="p: ${ulist}">
+            <td>ユーザ情報 (ID=[[${p.id}]])</td>
+            <td> [[${p.uid}]] </td>
+            <td> [[${p.name}]] </td>
+            <td> [[${p.createdAt}]] </td>
         </tr>
     </table>
-    </th:block>
+   
 </body>
 </html>

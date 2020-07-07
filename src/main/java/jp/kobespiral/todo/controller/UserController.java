@@ -34,7 +34,7 @@ public class UserController {
   public String showUser(@PathVariable String uid, Model model){
       List<UserDto> userList = us.getUserByuid(uid);
       model.addAttribute("ulist", userList);
-      return "ulist";
+      return "userinfo";
   }
 
   @GetMapping("/users")
