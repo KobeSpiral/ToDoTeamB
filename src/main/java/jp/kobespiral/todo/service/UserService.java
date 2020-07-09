@@ -27,7 +27,7 @@ public class UserService {
       User user = userRepository.save(new User(null, form.getUid(), form.getName(), now));
       return UserDto.build(user);
   } else { 
-      throw new UidException(((userRepository.findUserByUidLike(uid)).iterator()).next().getUid());
+      throw new UidException("ユーザIDが重複しています");
   }
 }
 
