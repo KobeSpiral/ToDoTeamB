@@ -1,12 +1,11 @@
 package jp.kobespiral.todo.controller;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import jp.kobespiral.todo.dto.UserDto;
 import jp.kobespiral.todo.form.UserForm;
 import jp.kobespiral.todo.service.UserService;
-import jp.kobespiral.todo.exception.HelloExceptionException;
+
 
 @Controller
 public class UserController {
@@ -23,7 +22,7 @@ public class UserController {
   private UserService us;
 
   @PostMapping("/users")
-  public String addUser(@ModelAttribute("userForm") UserForm userform, Model model) {
+  public String addUser(@ModelAttribute("userForm") @Validated UserForm userform, Model model) {
       UserDto userdto = us.createUser(userform);
       model.addAttribute("uid", userdto.getUid());
       model.addAttribute("name", userdto.getName());
