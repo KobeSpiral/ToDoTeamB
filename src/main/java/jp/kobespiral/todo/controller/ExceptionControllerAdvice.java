@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import jp.kobespiral.todo.exception.HelloExceptionException;
+import jp.kobespiral.todo.exception.UidException;
 
 
 @ControllerAdvice
@@ -43,8 +43,8 @@ public class ExceptionControllerAdvice {
      * @param exception 発生した例外
      * @return ExceptionUidのエラー画面
      */
-    @ExceptionHandler(HelloExceptionException.class)
-    public String helloError(HelloExceptionException exception, Model model) {
+    @ExceptionHandler(UidException.class)
+    public String helloError(UidException exception, Model model) {
         model.addAttribute("errMsg", exception.getMessage());
         return "error_uid";
     }

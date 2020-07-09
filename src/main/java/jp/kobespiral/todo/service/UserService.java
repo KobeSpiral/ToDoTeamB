@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import jp.kobespiral.todo.dto.UserDto;
 import jp.kobespiral.todo.entitiy.User;
-import jp.kobespiral.todo.exception.HelloExceptionException;
+import jp.kobespiral.todo.exception.UidException;
 import jp.kobespiral.todo.form.UserForm;
 import jp.kobespiral.todo.repository.UserRepository;
 
@@ -20,12 +20,14 @@ public class UserService {
 
   public UserDto createUser(UserForm form){
     Date now = new Date();
+    String uid = form.getUid();
+    List<UserDto> uids = this.getUserByuid(uid);
     
-    if (form.getUid() != null && userRepository.findUserByUidLike(form.getUid()) != null) {
-      throw new HelloExceptionException("uid重複が発生しました");
+    if (uid != null && uids.isEmpty()){
+      User user = userRepository.save(new User(null, form.getUid(), form.getName(), now));
+      return UserDto.build(user);
   } else { 
-    User user = userRepository.save(new User(null, form.getUid(), form.getName(), now));
-    return UserDto.build(user);
+      throw new UidException(((userRepository.findUserByUidLike(uid)).iterator()).next().getUid());
   }
 }
 
@@ -33,7 +35,7 @@ public class UserService {
   public List<UserDto> getUserByuid(String uid){
     ArrayList<UserDto> list = new ArrayList<UserDto>();
 
-        for (User user : userRepository.findUserByUidLike(uid)) {
+        for (User user : userRepository.findUserByUidLike( uid )) {
             list.add(UserDto.build(user));
         }
         return list;
