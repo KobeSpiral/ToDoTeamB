@@ -13,7 +13,7 @@ import jp.kobespiral.todo.exception.HelloExceptionException;
 
 
 @ControllerAdvice
-public class HelloExceptionControllerAdvice {
+public class ExceptionControllerAdvice {
     /**
      * NullPointerExceptionが発生した場合のエラー処理を行う
      * @param exception 発生した例外
@@ -41,12 +41,12 @@ public class HelloExceptionControllerAdvice {
     /**
      * 自作例外が発生した場合のエラー処理を行う
      * @param exception 発生した例外
-     * @return HelloExceptionExceptionのエラー画面
+     * @return ExceptionUidのエラー画面
      */
     @ExceptionHandler(HelloExceptionException.class)
     public String helloError(HelloExceptionException exception, Model model) {
         model.addAttribute("errMsg", exception.getMessage());
-        return "error_hello";
+        return "error_uid";
     }
 
     /**

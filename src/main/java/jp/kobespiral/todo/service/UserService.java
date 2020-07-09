@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import jp.kobespiral.todo.dto.UserDto;
 import jp.kobespiral.todo.entitiy.User;
+import jp.kobespiral.todo.exception.HelloExceptionException;
 import jp.kobespiral.todo.form.UserForm;
 import jp.kobespiral.todo.repository.UserRepository;
 
@@ -19,10 +20,15 @@ public class UserService {
 
   public UserDto createUser(UserForm form){
     Date now = new Date();
+    
+    if (form.getUid() != null && userRepository.findUserByUidLike(form.getUid()) != null) {
+      throw new HelloExceptionException("uid重複が発生しました");
+  } else { 
     User user = userRepository.save(new User(null, form.getUid(), form.getName(), now));
-
     return UserDto.build(user);
   }
+}
+
 
   public List<UserDto> getUserByuid(String uid){
     ArrayList<UserDto> list = new ArrayList<UserDto>();
