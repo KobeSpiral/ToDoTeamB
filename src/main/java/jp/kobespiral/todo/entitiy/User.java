@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,7 +24,9 @@ public class User {
   @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
+    @Pattern(regexp = "[0-9a-zA-Z]+")
     private String uid;
+    @NotBlank
     private String name;
 
     @Temporal(TemporalType.TIMESTAMP)
