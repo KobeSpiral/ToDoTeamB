@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo一覧</title>
+</head>
+
+<body>
+    <h1>ToDo一覧</h1>
+    <input type="button" class="simple_square_btn5" th:onclick="|location.href='@{/register}'|" value="新規ToDo登録" />
+    <input type="button" class="simple_square_btn5" th:onclick="|location.href='@{/}'|" value="タイトル画面へ" />
+    <table class="tablist">
+        <tr>
+            <th>ユーザ名</th>
+            <th>Task名</th>
+            <th>詳細</th>
+            <th>状態</th>
+            <th>作成日時</th>
+            <th>更新日時</th>
+            <th>終了日時</th>
+            <th></th>
+            <th>コマンド</th>
+        </tr>
+        <tr th:each="t: ${tlist}">
+            <td> [[${t.name}]] </td>
+            <td> [[${t.task}]] </td>
+            <td> [[${t.description}]] </td>
+            <td> [[${t.isOpen}]] </td>
+            <td> [[${t.createdAt}]] </td>
+            <td> [[${t.updatedAt}]] </td>
+            <td> [[${t.doneAt}]] </td>
+           <!-- <td> [[${#numbers.formatDecimal(p.bmi == null ? 0 : p.bmi, 0, 1)}]] </td>
+
+            <th:block th:switch="${p.obesity}">
+                <td th:case="'低体重'" style="background-color: #7c7cfc;">[[${p.obesity}]]</td>
+                <td th:case="'普通体重'" style="background-color: #7cfc7c;">[[${p.obesity}]]</td>
+                <td th:case="'肥満 (1度)'" style="background-color: #fcfc7c;">[[${p.obesity}]]</td>
+                <td th:case="'肥満 (2度)'" style="background-color: #fcbb91;">[[${p.obesity}]]</td>
+                <td th:case="'肥満 (3度)'" style="background-color: #fc9191;">[[${p.obesity}]]</td>
+                <td th:case="'肥満 (4度)'" style="background-color: #c08080;">[[${p.obesity}]]</td>
+                <td th:case="*">[[${p.obesity}]]</td>
+            </th:block> -->
+
+            <td>
+                <a th:href=@{/todos/{tid}/update(tid=${t.id})}>編集</a> |
+                <!-- <a th:href=@{/todos/{num}/delete(num=${p.number})}>削除</a> -->
+            </td>
+        </tr>
+    </table>
+</body>
