@@ -39,22 +39,25 @@ public class TodoService {
       
       public List<TodoForm> getTodoList() {
         ArrayList<TodoForm> list = new ArrayList<TodoForm>();
+        Date now = new Date();
+        // TodoForm todoform = new TodoForm((long)1,"name","title","des",true,now,now,now);
+        // list.add(todoform);
+      
         for(Todo t:tr.findAll()){
+          System.out.println("----------------------------"+t+"----------------------------");
           TodoForm todoform = new TodoForm();
           todoform.setTid(t.getId());
           todoform.setCreatedAt(t.getCreatedAt());
           todoform.setDescription(t.getDescription());
           todoform.setDoneAt(t.getDonedAt());
-      
-          for(User user:ur.findUserByUidLike(t.getUid())){
-            todoform.setName(user.getName());
-          }
+          todoform.setName(t.getUid());
+          // for(User user:ur.findUserByUidLike(t.getUid())){
+          //   todoform.setName(user.getName());
+          // }
           todoform.setOpen(t.isOpen());
           todoform.setTitle(t.getTitle());
           todoform.setUpdatedAt(t.getUpdatedAt());
           list.add(todoform);
-    
-          
         }
         return list;
       }
