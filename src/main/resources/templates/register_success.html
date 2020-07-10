@@ -8,5 +8,6 @@
   <th:block th:object = "${todo}">
   <p th:text="'ID: ' + *{uid} + '  Title: ' + *{title} + ' Description: '  + *{description} + ' Created at: ' + *{createdAt}"></p>
   </th:block>
+  <input type="button" class="simple_square_btn5" th:onclick="|location.href='@{/}'|" value="タイトル画面へ" />
 </body>
 </html>
