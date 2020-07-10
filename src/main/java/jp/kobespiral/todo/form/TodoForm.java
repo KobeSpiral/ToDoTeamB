@@ -5,9 +5,14 @@ import java.util.Date;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class TodoForm {
   
   private Long tid;
@@ -23,6 +28,6 @@ public class TodoForm {
   private Date updatedAt; //更新日時
 
   @Temporal(TemporalType.TIMESTAMP)
-  private Date donedAt; //終了日時
+  private Date doneAt; //終了日時
   
 }

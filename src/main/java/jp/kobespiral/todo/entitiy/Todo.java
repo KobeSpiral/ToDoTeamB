@@ -26,13 +26,13 @@ public class Todo {
   private String description;
   private boolean isOpen;
 
-  @Temporal(TemporalType.TIMESTAMP)
+  @Temporal(TemporalType.DATE)
   private Date createdAt; //作成日時  
 
-  @Temporal(TemporalType.TIMESTAMP)
+  @Temporal(TemporalType.DATE)
   private Date updatedAt; //更新日時
 
-  @Temporal(TemporalType.TIMESTAMP)
+  @Temporal(TemporalType.DATE)
   private Date donedAt; //終了日時
   
   private String uid;

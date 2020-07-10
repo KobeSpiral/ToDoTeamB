@@ -1,5 +1,7 @@
 package jp.kobespiral.todo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,24 +22,26 @@ public class TodoController {
 
   @PostMapping("/todos/register")
   public String registerTodo(@ModelAttribute("CreateForm") @Validated CreateForm createform, Model model) {
-      Todo todo = ts.createTodo(createform);
-      model.addAttribute("todo", todo); 
-      return "register_success";
+    Todo todo = ts.createTodo(createform);
+    model.addAttribute("todo", todo);
+    return "register_success";
   }
-
+  
   @GetMapping("/todolist")
-  public String showTodolist(Model model){
-      return "todolist";
+  public String showTodolist(Model model) {
+    List<TodoForm> todolist = ts.getTodoList();
+    System.out.println(todolist+"ssssssssssssssssssssssssssssssssssssss");
+    model.addAttribute("tlist", todolist);
+    return "todolist";
   }
-
+  
   @GetMapping("/register")
-  public String showRegister(Model model){
+  public String showRegister(Model model) {
     CreateForm createform = new CreateForm();
-    model.addAttribute("CreateForm",createform);
+    model.addAttribute("CreateForm", createform);
     return "register";
   }
 
   // @GetMapping("/todos/register")
 
-  
 }
