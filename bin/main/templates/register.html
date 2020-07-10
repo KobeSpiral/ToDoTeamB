@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo登録</title>
+    <!-- <link rel="stylesheet" type="text/css" th:href="@{/style.css}"> -->
+</head>
+
+<body>
+    <h1>ToDo登録</h1>
+
+    <form role="form" th:action="@{/todos}" th:object="${CreateForm}" method="post">
+        <table class="tabform large">
+            <tr>
+                <td><label for="uid">uid： </label></td>
+                <td><span th:text="*{uid}"></span></td>
+            </tr>
+            <tr>
+                <td><label for="Title：">Todo Title： </label></td>
+                <td><input class="large" type="text" required th:field="*{title}" /></td>
+            </tr>
+            <tr>
+                <td><label for="description">Todo description：</label></td>
+                <td><input class="description" type="text" required th:field="*{description}" /></td>
+            </tr>
+            
+            <!-- <tr>
+                <td><label for="height">身長：</label></td>
+                <td><input class="large" type="number" required min="0" value="160" step=".1" th:field="*{height}" /> cm</td>
+            </tr>
+            <tr>
+                <td><label for="weight">体重：</label></td>
+                <td><input class="large" type="number" required min="0" value="60" step=".1" th:field="*{weight}" /> kg</td>
+            </tr> -->
+            <tr>
+                <td colspan="2">
+                    <input type="button" class="large simple_square_btn5" onclick="history.back()" value="戻る" />
+                    <input type="submit" class="large simple_square_btn5" value="登録する" />
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+
+</html>

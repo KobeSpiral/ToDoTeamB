@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>User</title>
+</head>
+<body>
+  <th:block th:object = "${todo}">
+  <p th:text="'ID: ' + *{uid} + '  Title: ' + *{title} + ' Description: '  + *{description} + ' Created at: ' + *{createdAt}"></p>
+  </th:block>
+</body>
+</html>
