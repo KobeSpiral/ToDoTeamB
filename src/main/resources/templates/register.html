@@ -10,15 +10,15 @@
 <body>
     <h1>ToDo登録</h1>
 
-    <form role="form" th:action="@{/todos}" th:object="${CreateForm}" method="post">
+    <form role="form" th:action="@{/todos/register}" th:object="${CreateForm}" method="post">
         <table class="tabform large">
             <tr>
                 <td><label for="uid">uid： </label></td>
-                <td><span th:text="*{uid}"></span></td>
+                <td><input class="uid" type="text" required th:field="*{uid}" /></td>
             </tr>
             <tr>
                 <td><label for="Title：">Todo Title： </label></td>
-                <td><input class="large" type="text" required th:field="*{title}" /></td>
+                <td><input class="title" type="text" required th:field="*{title}" /></td>
             </tr>
             <tr>
                 <td><label for="description">Todo description：</label></td>
