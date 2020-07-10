@@ -19,6 +19,7 @@ import jp.kobespiral.todo.repository.UserRepository;
 public class TodoService {
   @Autowired
   TodoRepository tr;
+  @Autowired
   UserRepository ur;
 
   public Todo createTodo(CreateForm form){
@@ -44,16 +45,15 @@ public class TodoService {
         // list.add(todoform);
       
         for(Todo t:tr.findAll()){
-          System.out.println("----------------------------"+t+"----------------------------");
           TodoForm todoform = new TodoForm();
           todoform.setTid(t.getId());
           todoform.setCreatedAt(t.getCreatedAt());
           todoform.setDescription(t.getDescription());
           todoform.setDoneAt(t.getDonedAt());
-          todoform.setName(t.getUid());
-          // for(User user:ur.findUserByUidLike(t.getUid())){
-          //   todoform.setName(user.getName());
-          // }
+          for(User user : ur.findUserByUidLike(t.getUid())){
+            todoform.setName(user.getName());
+          }
+      
           todoform.setOpen(t.isOpen());
           todoform.setTitle(t.getTitle());
           todoform.setUpdatedAt(t.getUpdatedAt());
