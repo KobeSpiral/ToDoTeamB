@@ -8,10 +8,10 @@
 
 <body>
     <h1>ToDo一覧</h1>
-    <input type="button" class="simple_square_btn5" th:onclick="|location.href='@{/register}'|" value="新規ToDo登録" />
+    <!-- <input type="button" class="simple_square_btn5" th:onclick="|location.href='@{/register}'|" value="新規ToDo登録" />
     <input type="button" class="simple_square_btn5" th:onclick="|location.href='@{/}'|" value="タイトル画面へ" />
-    <table class="tablist">
-        <tr>
+    <table class="tablist"> -->
+        <!-- <tr>
             <th>ユーザ名</th>
             <th>Task名</th>
             <th>詳細</th>
@@ -24,12 +24,12 @@
         </tr>
         <tr th:each="t: ${tlist}">
             <td> [[${t.name}]] </td>
-            <td> [[${t.task}]] </td>
+            <td> [[${t.title}]] </td>
             <td> [[${t.description}]] </td>
             <td> [[${t.isOpen}]] </td>
             <td> [[${t.createdAt}]] </td>
             <td> [[${t.updatedAt}]] </td>
-            <td> [[${t.doneAt}]] </td>
+            <td> [[${t.doneAt}]] </td> -->
            <!-- <td> [[${#numbers.formatDecimal(p.bmi == null ? 0 : p.bmi, 0, 1)}]] </td>
 
             <th:block th:switch="${p.obesity}">
@@ -42,10 +42,10 @@
                 <td th:case="*">[[${p.obesity}]]</td>
             </th:block> -->
 
-            <td>
-                <a th:href=@{/todos/{tid}/update(tid=${t.id})}>編集</a> |
-                <!-- <a th:href=@{/todos/{num}/delete(num=${p.number})}>削除</a> -->
-            </td>
-        </tr>
-    </table>
+            <!-- <td>
+                <a th:href=@{/todos/{tid}/update(tid=${t.tid})}>編集</a> | 
+                <a th:href=@{/todos/{num}/delete(num=${p.number})}>削除</a>
+            </td> -->
+        <!-- </tr> -->
+    <!-- </table> -->
 </body>

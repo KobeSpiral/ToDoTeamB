@@ -1,5 +1,7 @@
 package jp.kobespiral.todo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +29,10 @@ public class TodoController {
 
   @GetMapping("/todolist")
   public String showTodolist(Model model){
+      // List<TodoForm> list = ts.getTodoList();
+      // model.addAttribute("tlist", list);
+      // System.out.println("uwaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+      // System.out.println(list);
       return "todolist";
   }
 
