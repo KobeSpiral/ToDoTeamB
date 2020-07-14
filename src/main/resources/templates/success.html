@@ -6,5 +6,6 @@
 </head>
 <body>
   <p th:text="'ID: ' + ${uid} + '  Name: ' + ${name} + ' Created at: ' + ${createdAt}"></p>
+  <input type="button" class="simple_square_btn5" th:onclick="|location.href='@{/admin}'|" value="戻る" />
 </body>
 </html>

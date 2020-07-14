@@ -21,6 +21,11 @@ public class UserController {
   @Autowired
   private UserService us;
 
+  @GetMapping("/admin")
+  public String showAdmin(){
+    return "admin.html";
+  }
+  
   @PostMapping("/users")
   public String addUser(@ModelAttribute("userForm") @Validated UserForm userform, Model model) {
       UserDto userdto = us.createUser(userform);
