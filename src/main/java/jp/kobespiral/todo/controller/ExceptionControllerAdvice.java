@@ -49,15 +49,15 @@ public class ExceptionControllerAdvice {
         return "error_uid";
     }
 
-    // /**
-    //  * 上記以外の例外が発生した場合のエラー処理を行う
-    //  * @param exception 発生した例外
-    //  * @return デフォルトのエラー画面
-    //  */
-    // @ExceptionHandler(Exception.class)
-    // public String occurOtherException(Exception exception){
-    //     return "error";
-    // }
+    /**
+     * 上記以外の例外が発生した場合のエラー処理を行う
+     * @param exception 発生した例外
+     * @return デフォルトのエラー画面
+     */
+    @ExceptionHandler(Exception.class)
+    public String occurOtherException(Exception exception){
+        return "error";
+    }
 
     /**
      * FormのValidationに対する例外処理
